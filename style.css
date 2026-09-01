@@ -75,7 +75,7 @@ nav ul li a:hover {
     justify-content: center;
     text-align: center;
     /* Fundo escuro na imagem inicial apenas para dar leitura no título branco */
-    background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url('/imagens/casados2.jpeg') center/cover no-repeat;
+    background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url('imagens/casados2.jpeg') center/cover no-repeat;
     margin-top: 60px;
 }
 
