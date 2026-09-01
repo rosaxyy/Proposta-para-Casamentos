@@ -1,0 +1,410 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* NOVA PALETA DE CORES CLARAS */
+:root {
+    --bg-color: #f9f9f9;       /* Fundo principal bem claro */
+    --text-main: #333333;      /* Texto principal escuro para leitura */
+    --text-muted: #666666;     /* Texto secundário cinza médio */
+    --accent-color: #b58c49;   /* Dourado suave/elegante para destaque */
+    --card-bg: #ffffff;        /* Fundo dos pacotes branco puro */
+    --border-color: #eaeaea;   /* Linhas e bordas sutis */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* Header (Navegação) */
+header {
+    background-color: rgba(255, 255, 255, 0.98);
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Sombra leve */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accent-color);
+    letter-spacing: 2px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+/* Hero Section (Capa) */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* Fundo escuro na imagem inicial apenas para dar leitura no título branco */
+    background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url('/imagens/casados2.jpeg') center/cover no-repeat;
+    margin-top: 60px;
+}
+
+#hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    color: #222;
+    text-shadow: 2px 2px 10px rgba(255,255,255,0.8);
+}
+
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 500;
+    text-shadow: 1px 1px 5px rgba(255,255,255,0.8);
+}
+
+.btn {
+    padding: 14px 35px;
+    background-color: var(--accent-color);
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: background 0.3s, transform 0.2s;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #9e7a3e;
+    transform: translateY(-2px);
+}
+
+/* Seções Gerais */
+section h2 {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+section p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ====== CARROSSEL (Modificado para tamanho original) ====== */
+.carousel-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #ebebeb; /* Fundo cinza para as bordas das fotos */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.carousel-track-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 550px; /* Altura padrão da caixa */
+}
+
+/* Ajuste para NÃO cortar a imagem */
+.carousel-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Garante o formato original */
+    cursor: pointer; /* Indica que é clicável */
+    transition: transform 0.3s ease;
+}
+
+.carousel-slide img:hover {
+    transform: scale(1.02);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255,255,255,0.8);
+    color: var(--accent-color);
+    border: none;
+    font-size: 24px;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.carousel-btn:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.carousel-btn.prev { left: 15px; }
+.carousel-btn.next { right: 15px; }
+
+
+/* ====== MODAL (LIGHTBOX PARA AMPLIAR) ====== */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    padding-top: 50px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.85); /* Fundo escuro focado na foto */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 4px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-modal:hover { color: var(--accent-color); }
+
+
+/* ====== CARDS DE PACOTES ====== */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 40px 30px;
+    border-radius: 12px;
+    width: 320px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    border-color: var(--accent-color);
+}
+
+.card h3 {
+    color: var(--text-main);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+.card ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.card ul li {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    color: var(--text-muted);
+}
+
+.card ul li::before {
+    content: '✓';
+    color: var(--accent-color);
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.preco {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-top: 15px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.pagamento {
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    border-left: 5px solid var(--accent-color);
+    text-align: left;
+    display: inline-block;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.pagamento h3 {
+    color: var(--text-main);
+    margin-bottom: 15px;
+}
+
+.pagamento p {
+    margin-bottom: 5px;
+    color: var(--text-muted);
+}
+
+/* ====== CONTATO ====== */
+.contato-info {
+    margin-top: 40px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.contato-info p {
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #ffffff;
+    color: #888484;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+}
+/* Container para alinhar os botões lado a lado */
+.redes-sociais {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* Estilo padrao dos botoes */
+.btn-rede {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease; /* Faz a mudança de cor ser suave */
+    border: 2px solid transparent;
+}
+
+.btn-rede i {
+    font-size: 1.3rem; /* Tamanho do icone */
+}
+
+/* ====== ESTILO DO WHATSAPP ====== */
+.btn-rede.zap {
+    background-color: #f0f0f0;
+    color: #25D366; /* Verde do Zap */
+    border-color: #25D366;
+}
+
+/* O que acontece quando passa o mouse por cima do WhatsApp */
+.btn-rede.zap:hover {
+    background-color: #25D366; /* Fundo fica verde */
+    color: #ffffff;            /* Texto e icone ficam brancos */
+    transform: translateY(-3px); /* Da um leve pulinho para cima */
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); /* Sombra verde */
+}
+
+/* ====== ESTILO DO INSTAGRAM ====== */
+.btn-rede.insta {
+    background-color: #f0f0f0;
+    color: #E1306C; /* Rosa do Instagram */
+    border-color: #E1306C;
+}
+
+/* O que acontece quando passa o mouse por cima do Instagram */
+.btn-rede.insta:hover {
+    background-color: #E1306C; /* Fundo fica rosa */
+    color: #ffffff;            /* Texto e icone ficam brancos */
+    transform: translateY(-3px); /* Da um leve pulinho para cima */
+    box-shadow: 0 5px 15px rgba(225, 48, 108, 0.3); /* Sombra rosa */
+}
