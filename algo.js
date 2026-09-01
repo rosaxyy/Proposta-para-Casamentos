@@ -83,3 +83,20 @@ btnNext.addEventListener('click', () => {
 btnPrev.addEventListener('click', () => {
     moveCarousel(currentIndex - 1);
 });
+// ==========================================
+// 4. MENU HAMBÚRGUER (MOBILE)
+// ==========================================
+const menuToggle = document.getElementById('mobile-menu');
+const navList = document.querySelector('.nav-list');
+
+// Abre ou fecha o menu ao clicar nas 3 listras
+menuToggle.addEventListener('click', () => {
+    navList.classList.toggle('active');
+});
+
+// Esconde o menu automaticamente quando clica em algum link
+document.querySelectorAll('.nav-list li a').forEach(link => {
+    link.addEventListener('click', () => {
+        navList.classList.remove('active');
+    });
+});
