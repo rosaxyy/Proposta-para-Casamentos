@@ -408,3 +408,43 @@ footer {
     transform: translateY(-3px); /* Da um leve pulinho para cima */
     box-shadow: 0 5px 15px rgba(225, 48, 108, 0.3); /* Sombra rosa */
 }
+/* ====== RESPONSIVIDADE DO MENU (MOBILE) ====== */
+
+/* Esconde o botão hambúrguer no computador */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--accent-color);
+}
+
+/* Regras apenas para telas de até 768px (Celulares) */
+@media (max-width: 768px) {
+    /* Mostra o botão hambúrguer */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Esconde a lista de links e prepara o formato de gaveta */
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Fica logo abaixo do header */
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        padding: 20px 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        gap: 15px; /* Espaço entre os links */
+    }
+
+    /* Quando a classe 'active' for adicionada pelo JS, o menu aparece */
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        text-align: center;
+    }
+}
